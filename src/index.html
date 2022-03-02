@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Alexander Horner</title>
+
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com"> 
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Playfair+Display:wght@400;700;800&display=swap" rel="stylesheet">
+
+        <!-- Favicons -->
+        <link rel="apple-touch-icon" sizes="180x180" href="./favicons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="./favicons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="./favicons/favicon-16x16.png">
+        <link rel="manifest" href="./favicons/site.webmanifest">
+        <link rel="mask-icon" href="./favicons/safari-pinned-tab.svg" color="#292725">
+        <meta name="msapplication-TileColor" content="#292725">
+        <meta name="theme-color" content="#292725">
+
+        <script type="module" src="./js/app.ts"></script>
+        <link href="./css/app.scss" rel="stylesheet">
+    </head>
+
+    <body>
+        <header>
+            <img class="logo" src="./img/AH-logo.svg" style="margin-right: auto" alt="Logo consisting of the letters A and H">
+            <a href="" style="margin-right: 2em">Contact</a>
+            <a href="" style="margin-right: 3em">Hire me</a>
+        </header>
+
+        <section name="top" class="top-section">    
+            <h1>Alexander Horner</h1>
+
+            <div class="scroll-down">
+                <div>scroll</div>
+                <img src="./img/arrow-down.svg" alt="Arrow down">
+            </div>
+        </section>
+
+        <section name="about-me" class="about-me">
+
+            <h2>About me</h2>
+
+            <div class="description">
+                <img src="./img/me.jpeg" alt="Portrait of Alexander Horner">
+                
+                <div>
+                    <p>I am a young amateur <b>full stack developer</b> who’s also proficient at designing <b>beautiful websites</b> and applications. I‘m great with working in teams but can also get things done alone.</p>
+                    <p>I’m still attending school, but work on big projects with great success so far.  I love solving problems and using the <b>newest technologies</b> that will give you the edge against your competitors.</p>
+                </div>
+            </div>
+
+        </section>
+
+        <section name="contact-me" class="contact-me">
+            <h2>Contact me</h2>
+
+            <form method="POST" action="/api/submit">
+
+                <label for="name">Name:</label>
+                <input autocomplete="name" type="text" name="name" placeholder="What’s your full name?">
+
+                <label for="email">Email:</label>
+                <input autocomplete="email" type="email" name="email" placeholder="What’s your email address?">
+
+                <label for="message">Message:</label>
+                <textarea name="Text1" name="message" rows="3"></textarea>
+
+                <span></span>
+                <input class="submit" type="submit" value="Send">
+
+            </form>
+        </section>
+    </body>
+
+</html>
