@@ -1,7 +1,7 @@
 /**
  * POST /api/submit
  */
- export async function onRequestPost(context) {
+export async function onRequestPost(context) {
 	try {
 		let input = await context.request.formData();
 		let pretty = JSON.stringify([...input], null, 2);
@@ -11,18 +11,29 @@
 
 	return await fetch('https://api.sendgrid.com/v3/mail/send', {
 		body: JSON.stringify({
-		'from': {
-			'email': '', // add your email here
-		},
-		'personalizations': [
-			{
-			'to': [
+			"personalizations":[
 				{
-					'email': 'mail@alexanderhorner.com',
-				},
-			]
+					"to":[
+						{
+							"email":"mail@alexanderhorner.com"
+						}
+					],
+					"subject":"Hello, World!"
+				}
+			],
+			"content":[
+				{
+					"type":"text/plain",
+					"value":"Heya!"
+				}
+			],
+			"from":{
+				"email":"mail@alexanderhorner.com"
 			},
-		]
+			"reply_to":{
+				"email":"sam@smith.com",
+				"name":"Sam Smith"
+			}
 		}),
 		headers: {
 		'Authorization': `Bearer ${SENDGRID_API_KEY}`,
