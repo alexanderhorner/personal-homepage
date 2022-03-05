@@ -46,7 +46,7 @@ export async function onRequestPost({ env, request }) {
 		return new Response(`Error sending email: ${error}`, { status: 400 })
 	}
 
-	return new Response({ ...pretty, ...response }, {
+	return new Response(response, {
 		headers: {
 			'Content-Type': 'application/json;charset=utf-8',
 		},
