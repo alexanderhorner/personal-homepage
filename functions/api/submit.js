@@ -54,10 +54,10 @@ export async function onRequestPost({ env, request }) {
 		APIResponse
 	}
 
-	response =  JSON.stringify([...input])
+	let prettyResponse =  JSON.stringify([...response])
 
 	return new Response(
-		response,
+		prettyResponse,
 		{
 			headers: {
 				'Content-Type': 'application/json;charset=utf-8',
