@@ -54,7 +54,7 @@ export async function onRequestPost({ env, request }) {
 		APIResponse
 	}
 
-	let prettyResponse =  JSON.stringify([...response])
+	let prettyResponse =  JSON.stringify(response)
 
 	return new Response(
 		prettyResponse,
