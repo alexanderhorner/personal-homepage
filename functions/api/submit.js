@@ -1,9 +1,9 @@
 /**
  * POST /api/submit
  */
-export async function onRequestPost(env, context) {
+export async function onRequestPost({ env, request }) {
 	try {
-		let input = await context.request.formData()
+		let input = await request.formData()
 		let pretty = JSON.stringify([...input], null, 2)
 	} catch (error) {
 		return new Response(`Error parsing JSON content: ${error}`, { status: 400 })
