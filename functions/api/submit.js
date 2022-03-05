@@ -1,7 +1,7 @@
 /**
  * POST /api/submit
  */
-export async function onRequestPost(context) {
+export async function onRequestPost(env, context) {
 	try {
 		let input = await context.request.formData()
 		let pretty = JSON.stringify([...input], null, 2)
@@ -37,7 +37,7 @@ export async function onRequestPost(context) {
 				}
 			}),
 			headers: {
-			'Authorization': `Bearer ${SENDGRID_API_KEY}`,
+			'Authorization': `Bearer ${env.SENDGRID_API_KEY}`,
 			'Content-Type': 'application/json',
 			},
 			method: 'POST',
