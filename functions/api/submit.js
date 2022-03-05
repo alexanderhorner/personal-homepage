@@ -8,6 +8,8 @@ export async function onRequestPost({ env, request }) {
 	try {
 		let formData = await request.formData()
 		let pretty = JSON.stringify([...formData], null, 2)
+
+		data = {}
 		for(var pair of formData.entries()) {
 			data[pair[0]] = pair[1];
 		}
