@@ -3,13 +3,16 @@
  */
 export async function onRequestPost({ env, request }) {
 
-	let pretty, APIResponse, formData
+	let APIResponse, data
 
 	try {
-		formData = await request.formData()
-		pretty = JSON.stringify([...formData], null, 2)
+		let formData = await request.formData()
+		let pretty = JSON.stringify([...formData], null, 2)
+		for(var pair of formData.entries()) {
+			data[pair[0]] = pair[1];
+		}
 	} catch (error) {
-		return new Response(`Error parsing JSON content: ${error}`, { status: 400 })
+		return new Response(`Error parsing input: ${error}`, { status: 400 })
 	}
 
 	try {
