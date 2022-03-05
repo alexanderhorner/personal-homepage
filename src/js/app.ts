@@ -1,3 +1,3 @@
 import autosize from "autosize"
 
-autosize(document.querySelector('textarea'));
+autosize(document.querySelector('.message'));
