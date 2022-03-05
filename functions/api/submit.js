@@ -3,11 +3,11 @@
  */
 export async function onRequestPost({ env, request }) {
 
-	let pretty, APIResponse
+	let pretty, APIResponse, formData
 
 	try {
-		let input = await request.formData()
-		pretty = JSON.stringify([...input], null, 2)
+		formData = await request.formData()
+		pretty = JSON.stringify([...formData], null, 2)
 	} catch (error) {
 		return new Response(`Error parsing JSON content: ${error}`, { status: 400 })
 	}
@@ -22,13 +22,13 @@ export async function onRequestPost({ env, request }) {
 								"email":"mail@alexanderhorner.com"
 							}
 						],
-						"subject":"Hello, World!"
+						"subject":"Homepage Contact form"
 					}
 				],
 				"content":[
 					{
 						"type":"text/plain",
-						"value":"Heya!"
+						"value": "GEy"
 					}
 				],
 				"from":{
@@ -50,7 +50,7 @@ export async function onRequestPost({ env, request }) {
 	}
 
 	let response = {
-		input: pretty,
+		formData,
 		APIResponse
 	}
 
