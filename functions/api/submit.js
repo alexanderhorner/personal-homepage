@@ -50,7 +50,9 @@ export async function onRequestPost({ env, request }) {
 	}
 
 	let response = {
+		pretty,
 		formData,
+		name: formData.name,
 		APIResponse
 	}
 
