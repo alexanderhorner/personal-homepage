@@ -37,7 +37,7 @@ export async function onRequestPost(context) {
 				}
 			}),
 			headers: {
-			'Authorization': `Bearer ${SENDGRID_API_KEY}`,
+			'Authorization': `Bearer ${process.env.SENDGRID_API_KEY}`,
 			'Content-Type': 'application/json',
 			},
 			method: 'POST',
