@@ -55,7 +55,7 @@ export async function onRequestPost({ env, request }) {
 	}
 
 	let response = {
-		formData: JSON.parse(pretty),
+		input: data,
 		APIResponse
 	}
 
