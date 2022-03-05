@@ -1,9 +1,9 @@
 /**
  * POST /api/submit
  */
-export async function onRequestPost({ env, request }) {
+export async function onRequestPost(context) {
 	try {
-		let input = await request.formData()
+		let input = await context.request.formData()
 		let pretty = JSON.stringify([...input], null, 2)
 	} catch (error) {
 		return new Response(`Error parsing JSON content: ${error}`, { status: 400 })
@@ -37,7 +37,7 @@ export async function onRequestPost({ env, request }) {
 				}
 			}),
 			headers: {
-			'Authorization': `Bearer ${env.SENDGRID_API_KEY}`,
+			'Authorization': `Bearer ${context.env.SENDGRID_API_KEY}`,
 			'Content-Type': 'application/json',
 			},
 			method: 'POST',
