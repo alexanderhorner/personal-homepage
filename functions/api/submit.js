@@ -2,15 +2,18 @@
  * POST /api/submit
  */
 export async function onRequestPost({ env, request }) {
+
+	let pretty, response
+
 	try {
 		let input = await request.formData()
-		let pretty = JSON.stringify([...input], null, 2)
+		pretty = JSON.stringify([...input], null, 2)
 	} catch (error) {
 		return new Response(`Error parsing JSON content: ${error}`, { status: 400 })
 	}
 
 	try {
-		let response = await fetch('https://api.sendgrid.com/v3/mail/send', {
+		response = await fetch('https://api.sendgrid.com/v3/mail/send', {
 			body: JSON.stringify({
 				"personalizations":[
 					{
@@ -46,10 +49,16 @@ export async function onRequestPost({ env, request }) {
 		return new Response(`Error sending email: ${error}`, { status: 400 })
 	}
 
-	return new Response(response, {
-		headers: {
-			'Content-Type': 'application/json;charset=utf-8',
-		},
-	})
+	return new Response(
+		{
+			input: pretty,
+			response
+		}, 
+		{
+			headers: {
+				'Content-Type': 'application/json;charset=utf-8',
+			},
+		}
+	)
 	
 }
