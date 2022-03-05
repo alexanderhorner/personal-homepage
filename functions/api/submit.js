@@ -3,7 +3,7 @@
  */
 export async function onRequestPost({ env, request }) {
 
-	let pretty, response
+	let pretty, APIResponse
 
 	try {
 		let input = await request.formData()
@@ -13,7 +13,7 @@ export async function onRequestPost({ env, request }) {
 	}
 
 	try {
-		response = await fetch('https://api.sendgrid.com/v3/mail/send', {
+		APIResponse = await fetch('https://api.sendgrid.com/v3/mail/send', {
 			body: JSON.stringify({
 				"personalizations":[
 					{
@@ -49,11 +49,15 @@ export async function onRequestPost({ env, request }) {
 		return new Response(`Error sending email: ${error}`, { status: 400 })
 	}
 
+	let response = {
+		input: pretty,
+		APIResponse
+	}
+
+	response =  JSON.stringify([...input])
+
 	return new Response(
-		{
-			input: pretty,
-			response
-		}, 
+		response,
 		{
 			headers: {
 				'Content-Type': 'application/json;charset=utf-8',
