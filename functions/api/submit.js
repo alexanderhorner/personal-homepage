@@ -18,11 +18,12 @@ export async function onRequestPost({ env, request }) {
 	}
 
 	try {
-		const body = `Von: ${data.name || 'Unbekannt'} (${data.email || 'Nicht angegeben'})\n\n
-			Nachricht: \n
-			${data.message || "Leere Nachricht"} \n\n
-			----------------------------------------------\n
-		`
+		const body = 
+`Von: ${data.name || 'Unbekannt'} (${data.email || 'Nicht angegeben'})\n\n
+Nachricht: \n
+${data.message || "Leere Nachricht"} \n\n
+-------------------\n
+`
 
 
 		APIResponse = await fetch('https://api.sendgrid.com/v3/mail/send', {
