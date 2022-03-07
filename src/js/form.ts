@@ -11,10 +11,7 @@ form.addEventListener("submit", (e) => {
     document.querySelector(".submit").disabled = true;
 
     formData = new FormData(form);
-    actionPath = form.getAttribute("action");
-
-    xhr.open("POST", actionPath);
-    xhr.send(formData);
+    actionPath = form.getAttribute("action")
 
     fetch(actionPath, {
         method: 'post',
