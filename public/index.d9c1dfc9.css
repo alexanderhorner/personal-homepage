@@ -176,6 +176,14 @@ header a:hover {
   margin-bottom: 2em;
 }
 
+.contact-me .error {
+  margin: 0 auto 50px;
+  display: none;
+  width: calc(100% - 40px);
+  max-width: 600px;
+  color: #eb4747;
+}
+
 .contact-me form {
   width: calc(100% - 40px);
   max-width: 600px;
@@ -235,5 +243,11 @@ header a:hover {
 
 .contact-me input.submit:active, .contact-me textarea.submit:active {
   opacity: 0.8;
+}
+
+.contact-me .success {
+  display: none;
+  margin: 0 auto;
+  width: 200px;
 }
 /*# sourceMappingURL=index.d9c1dfc9.css.map */

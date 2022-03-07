@@ -524,37 +524,7 @@ var _autosize = require("autosize");
 var _autosizeDefault = parcelHelpers.interopDefault(_autosize);
 _autosizeDefault.default(document.querySelector('.message'));
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","autosize":"dICke"}],"gkKU3":[function(require,module,exports) {
-exports.interopDefault = function(a) {
-    return a && a.__esModule ? a : {
-        default: a
-    };
-};
-exports.defineInteropFlag = function(a) {
-    Object.defineProperty(a, '__esModule', {
-        value: true
-    });
-};
-exports.exportAll = function(source, dest) {
-    Object.keys(source).forEach(function(key) {
-        if (key === 'default' || key === '__esModule' || dest.hasOwnProperty(key)) return;
-        Object.defineProperty(dest, key, {
-            enumerable: true,
-            get: function() {
-                return source[key];
-            }
-        });
-    });
-    return dest;
-};
-exports.export = function(dest, destName, get) {
-    Object.defineProperty(dest, destName, {
-        enumerable: true,
-        get: get
-    });
-};
-
-},{}],"dICke":[function(require,module,exports) {
+},{"autosize":"dICke","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dICke":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var e, t, n = "function" == typeof Map ? new Map : (e = [], t = [], {
@@ -667,6 +637,36 @@ var l1 = null;
 var d = l1;
 exports.default = d;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["gGu9L","iGpzc"], "iGpzc", "parcelRequire36d0")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, '__esModule', {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === 'default' || key === '__esModule' || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}]},["gGu9L","iGpzc"], "iGpzc", "parcelRequire36d0")
 
 //# sourceMappingURL=index.dddb293e.js.map

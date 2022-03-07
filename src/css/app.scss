@@ -163,6 +163,14 @@ header {
         margin-bottom: 2em;
     }
 
+    .error {
+        margin: 0 auto 50px;
+        display: none;
+        width: calc(100% - 40px);
+        max-width: 600px;
+        color: hsl(0, 80%, 60%)
+    }
+
     form {
         width: calc(100% - 40px);
         max-width: 600px;
@@ -218,5 +226,12 @@ header {
                 opacity: 0.8;
             }
         }
-    }   
+    }
+
+    .success {
+        display: none;
+        margin: 0 auto;
+        width: 200px;
+    }
+
 }
