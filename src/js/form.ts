@@ -9,6 +9,8 @@ form.addEventListener("submit", (e) => {
     
     // @ts-ignore
     document.querySelector(".submit").disabled = true;
+    // @ts-ignore
+    document.querySelector(".error").style.display = "none"
 
     formData = new FormData(form);
     actionPath = form.getAttribute("action")
