@@ -14,7 +14,7 @@ form.addEventListener("submit", (e)=>{
         method: 'post',
         body: formData
     }).then((response)=>{
-        if (response.status[0] != 2) throw 'HTTP Status code is not 2xx';
+        if (!response.status.toString().startsWith("2")) throw 'HTTP Status code is not 2xx';
         return response;
     }).then((response)=>{
         // @ts-ignore

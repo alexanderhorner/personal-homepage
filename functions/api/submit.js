@@ -18,6 +18,13 @@ export async function onRequestPost({ env, request }) {
 	}
 
 	try {
+		const body = `Von: ${data.name || 'Unbekannt'} (${data.email || 'Nicht angegeben'})\n\n
+			Nachricht: \n
+			${data.message || "Leere Nachricht"} \n\n
+			----------------------------------------------\n
+		`
+
+
 		APIResponse = await fetch('https://api.sendgrid.com/v3/mail/send', {
 			body: JSON.stringify({
 				"personalizations":[
@@ -33,15 +40,15 @@ export async function onRequestPost({ env, request }) {
 				"content":[
 					{
 						"type":"text/plain",
-						"value": "GEy"
+						"value": body
 					}
 				],
 				"from":{
 					"email":"mail@alexanderhorner.com"
 				},
 				"reply_to":{
-					"email":"sam@smith.com",
-					"name":"Sam Smith"
+					"email": data.email || '',
+					"name": data.name || 'Kein Name'
 				}
 			}),
 			headers: {

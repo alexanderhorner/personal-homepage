@@ -20,13 +20,9 @@ form.addEventListener("submit", (e) => {
         method: 'post',
         body: formData,
     }).then(response => {
-            console.log(response.status)
-            console.log(response.status.toString())
-            console.log(response.status.toString().startsWith("2"))
-            
             if (!response.status.toString().startsWith("2")) {
                 throw 'HTTP Status code is not 2xx';
-            } 
+            }
             return response
         }).then(response => {
             // @ts-ignore
