@@ -20,8 +20,8 @@ form.addEventListener("submit", (e) => {
             // @ts-ignore
             document.querySelector(".success").style.display = "block"
             // @ts-ignore
-            document.querySelector(".form").style.display = "none"
-            
+            document.querySelector("form").style.display = "none"
+
             console.log(response.json())
         })
         .catch(error => {
