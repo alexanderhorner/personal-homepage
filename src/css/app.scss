@@ -225,6 +225,11 @@ header {
             &:active {
                 opacity: 0.8;
             }
+
+            &:disabled {
+                opacity: 0.6;
+                cursor: default;
+            }
         }
     }
 

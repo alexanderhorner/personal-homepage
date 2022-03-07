@@ -245,6 +245,11 @@ header a:hover {
   opacity: 0.8;
 }
 
+.contact-me input.submit:disabled, .contact-me textarea.submit:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
 .contact-me .success {
   display: none;
   margin: 0 auto;
