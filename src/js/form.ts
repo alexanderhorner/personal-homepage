@@ -9,8 +9,6 @@ form.addEventListener("submit", (e) => {
     
     // @ts-ignore
     document.querySelector(".submit").disabled = true;
-    // @ts-ignore
-    document.querySelector(".error").style.display = "none"
 
     formData = new FormData(form);
     actionPath = form.getAttribute("action")
@@ -28,6 +26,8 @@ form.addEventListener("submit", (e) => {
             document.querySelector(".success").style.display = "block"
             // @ts-ignore
             document.querySelector("form").style.display = "none"
+            // @ts-ignore
+            document.querySelector(".error").style.display = "none"
 
             console.log(response.json())
         }).catch(error => {
