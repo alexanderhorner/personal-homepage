@@ -13,7 +13,7 @@ form.addEventListener("submit", (e) => {
     xhr.open("POST", actionPath);
     xhr.send(formData);
 
-    fetch('actionPath', {
+    fetch(actionPath, {
         method: 'post',
         body: formData,
     }).then(response => {
