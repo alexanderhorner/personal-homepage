@@ -8,8 +8,6 @@ form.addEventListener("submit", (e)=>{
     document.querySelector(".submit").disabled = true;
     formData = new FormData(form);
     actionPath = form.getAttribute("action");
-    xhr.open("POST", actionPath);
-    xhr.send(formData);
     fetch(actionPath, {
         method: 'post',
         body: formData
@@ -21,6 +19,8 @@ form.addEventListener("submit", (e)=>{
         document.querySelector(".success").style.display = "block";
         // @ts-ignore
         document.querySelector("form").style.display = "none";
+        // @ts-ignore
+        document.querySelector(".error").style.display = "none";
         console.log(response.json());
     }).catch((error)=>{
         console.log(error);

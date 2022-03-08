@@ -55,8 +55,9 @@ header a:hover {
   top: 0;
   right: 0;
   bottom: 0;
-  display: grid;
-  place-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-image: url("glass-circle3.c8e01e45.jpg");
   background-size: 170%;
   background-position: center;
