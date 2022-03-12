@@ -257,6 +257,7 @@ header a:last-child {
 
 .contact-me input.submit, .contact-me textarea.submit {
   cursor: pointer;
+  min-height: 3.125rem;
 }
 
 .contact-me input.submit:active, .contact-me textarea.submit:active {

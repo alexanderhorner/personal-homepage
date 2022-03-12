@@ -20,12 +20,6 @@ form.addEventListener("submit", (e) => {
             if (!response.status.toString().startsWith("2")) {
                 throw 'HTTP Status code is not 2xx'
             }
-            console.log(response)
-            console.log(response["APIResponse"])
-            console.log(response["APIResponse"].status.toString())
-            if (!response["APIResponse"].status.toString().startsWith("2")) {
-                throw 'APIResponse Status code is not 2xx'
-            }
             return response
         }).then(response => {
             // @ts-ignore
