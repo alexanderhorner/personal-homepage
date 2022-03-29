@@ -160,7 +160,7 @@ header {
                 grid-column: 2 / 6;
                 margin-bottom: 0em;
     
-                &:last-child {
+                &:nth-child(2n) {
                     grid-column: 1 / 5;
                 }
     
