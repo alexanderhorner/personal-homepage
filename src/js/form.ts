@@ -74,8 +74,6 @@ form.addEventListener("submit", (e) => {
             document.querySelector("form").style.display = "none"
             // @ts-ignore
             document.querySelector(".error").style.display = "none"
-
-            console.log(response.json())
         }).catch(error => {
             console.log(error);
             // @ts-ignore
