@@ -56,8 +56,8 @@ form.addEventListener("submit", async (e) => {
     console.log(token);
     
 
-    formData.append('googlecaptcha-token', token)
-    formData.append('googlecaptcha-site-key', '6LeyVLEfAAAAACOQ-LvNhzgJf94CsQfG9ltauUxV')
+    formData.append('googlecaptchaToken', token)
+    formData.append('googlecaptchaSiteKey', '6LeyVLEfAAAAACOQ-LvNhzgJf94CsQfG9ltauUxV')
 
     actionPath = form.getAttribute("action")
 
