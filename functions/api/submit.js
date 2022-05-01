@@ -19,10 +19,10 @@ export async function onRequestPost({ env, request }) {
 
 	try {
 		const body = 
-`Von: ${data.name || 'Unbekannt'} (${data.email || 'Nicht angegeben'})\n\n
-Nachricht: \n
-${data.message || "Leere Nachricht"} \n\n
--------------------\n
+`Von: ${data.name || 'Unbekannt'} (${data.email || 'Nicht angegeben'})
+Nachricht:
+${data.message || "Leere Nachricht"}
+-------------------
 `
 
 
@@ -48,7 +48,7 @@ ${data.message || "Leere Nachricht"} \n\n
 					"email":"mail@alexanderhorner.com"
 				},
 				"reply_to":{
-					"email": data.email || '',
+					"email": data.email || 'N/A',
 					"name": data.name || 'Kein Name'
 				}
 			}),

@@ -22,7 +22,20 @@
         <script type="module" src="./js/app.ts"></script>
         <script defer src="./js/form.ts"></script>
         <script defer src="./js/smoothscroll.ts"></script>
+        <!-- <script defer src="./js/googlecaptcha.ts"></script> -->
         <link href="./css/app.scss" rel="stylesheet">
+
+        <script src="https://www.google.com/recaptcha/enterprise.js?render=6LeyVLEfAAAAACOQ-LvNhzgJf94CsQfG9ltauUxV"></script>
+        <script>
+            grecaptcha.enterprise.ready(function() {
+                grecaptcha.enterprise.execute('6LeyVLEfAAAAACOQ-LvNhzgJf94CsQfG9ltauUxV', {action: 'homepage'}).then(function(token) {
+                   // IMPORTANT: The 'token' that results from execute is an encrypted response sent by
+                   // reCAPTCHA Enterprise to the end user's browser.
+                   // This token must be validated by creating an assessment.
+                   // See https://cloud.google.com/recaptcha-enterprise/docs/create-assessment
+                });
+            });
+        </script>
     </head>
 
     <body>
@@ -63,6 +76,9 @@
             <div class="error">An error occured. Try again later.</div>
 
             <form method="POST" action="/api/submit">
+
+                <!-- <span></span>
+                <div class="g-recaptcha" data-sitekey="6LeyVLEfAAAAACOQ-LvNhzgJf94CsQfG9ltauUxV"></div> -->
 
                 <label for="name">Name:</label>
                 <input autocomplete="name" type="text" name="name" placeholder="What’s your full name?">

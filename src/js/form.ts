@@ -35,21 +35,30 @@ let formData = null;
 
 var xhr = new XMLHttpRequest();
 
-form.addEventListener("submit", (e) => {
+function getGoogleCaptchaToken() { 
+    return new Promise((resolve, reject) => {
+        grecaptcha.enterprise.ready(async () => {
+            const token = await grecaptcha.enterprise.execute('6LeyVLEfAAAAACOQ-LvNhzgJf94CsQfG9ltauUxV', {action: 'LOGIN'});
+            resolve(token)
+        })
+    })
+}
+
+form.addEventListener("submit", async (e) => {
     e.preventDefault();
     
+    formData = new FormData(form)
+
     // @ts-ignore
     document.querySelector(".submit").disabled = true;
 
-    // grecaptcha.enterprise.ready(async () => {
-    //     const token = await grecaptcha.enterprise.execute('site_key', {action: 'LOGIN'});
-    //     // IMPORTANT: The 'token' that results from execute is an encrypted response sent by
-    //     // reCAPTCHA Enterprise to the end user's browser.
-    //     // This token must be validated by creating an assessment.
-    //     // See https://cloud.google.com/recaptcha-enterprise/docs/create-assessment
-    // });
+    const token = await getGoogleCaptchaToken()
+    console.log(token);
+    
 
-    formData = new FormData(form);
+    formData.append('googlecaptcha-token', token)
+    formData.append('googlecaptcha-site-key', '6LeyVLEfAAAAACOQ-LvNhzgJf94CsQfG9ltauUxV')
+
     actionPath = form.getAttribute("action")
 
     fetch(actionPath, {
@@ -75,7 +84,7 @@ form.addEventListener("submit", (e) => {
             // @ts-ignore
             document.querySelector(".error").style.display = "none"
         }).catch(error => {
-            console.log(error);
+            console.error(`E-Mail Form Error: ${error}`);
             // @ts-ignore
             document.querySelector(".error").style.display = "block"
             // @ts-ignore
