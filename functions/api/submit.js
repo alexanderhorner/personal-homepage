@@ -156,7 +156,7 @@ async function createCaptchaAsessment(GCloudProjectID, recaptchaSiteKey, recaptc
 			
 			return returnObject;
 		} else {
-			throw "The action attribute in your reCAPTCHA tag does not match the action you are expecting to score");
+			throw "The action attribute in your reCAPTCHA tag does not match the action you are expecting to score"
 		}
    }
 }
