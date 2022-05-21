@@ -13,7 +13,19 @@ export async function onRequestPost({ env, request }) {
 			data[pair[0]] = pair[1];
 		}
 	} catch (error) {
-		return new Response(`Error parsing input: ${error}`, { status: 400 })
+		let responseObj = {
+			status: 'error',
+			message: `Error parsing input: ${error}`
+		}
+		return new Response(
+			JSON.stringify(responseObj),
+			{
+				status: 400,
+				headers: {
+					'Content-Type': 'application/json;charset=utf-8',
+				},
+			}
+		)
 	}
 
 
@@ -22,8 +34,23 @@ export async function onRequestPost({ env, request }) {
 		const apiRoute = `https://www.google.com/recaptcha/api/siteverify?secret=${env.CAPTCHA_PRIVATE_KEY}&response=${data['g-recaptcha-response']}`
 		captchaResponse = await fetch(apiRoute)
 		captchaResponse = await captchaResponse.json()
+		if (captchaResponse.success === false) {
+			throw `Capture wrong (${captchaResponse["error-codes"][0]})`
+		}
 	} catch (error) {
-		return new Response(`Error verifying captcha: ${error}`, { status: 400 })
+		let responseObj = {
+			status: 'error',
+			message: `Error verifying captcha: ${error}`
+		}
+		return new Response(
+			JSON.stringify(responseObj),
+			{
+				status: 400,
+				headers: {
+					'Content-Type': 'application/json;charset=utf-8',
+				},
+			}
+		)
 	}
 	
 
@@ -72,10 +99,23 @@ ${data.message || "Leere Nachricht"}
 			method: 'POST',
 		})
 	} catch (error) {
-		return new Response(`Error sending email: ${error}`, { status: 400 })
+		let responseObj = {
+			status: 'error',
+			message: `Error sending email: ${error}`
+		}
+		return new Response(
+			JSON.stringify(responseObj),
+			{
+				status: 400,
+				headers: {
+					'Content-Type': 'application/json;charset=utf-8',
+				},
+			}
+		)
 	}
 
 	let response = {
+		status: 'success',
 		input: data,
 		captchaResponse,
 		APIResponse
