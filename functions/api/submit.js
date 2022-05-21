@@ -71,7 +71,6 @@ ${data.message || "Leere Nachricht"}
 			},
 			method: 'POST',
 		})
-		realAPIResponse = await APIResponse.json()
 	} catch (error) {
 		return new Response(`Error sending email: ${error}`, { status: 400 })
 	}
