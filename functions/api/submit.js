@@ -19,20 +19,18 @@ export async function onRequestPost({ env, request }) {
 
 
 	// Captcha verification
-	try {
-		const apiRoute = `https://www.google.com/recaptcha/api/siteverify?secret=${env.CAPTCHA_PRIVATE_KEY}&response=${formData.googlecaptchaToken}`
-		captchaResponse = await fetch(apiRoute)
-	} catch (error) {
-		return new Response(`Error verifying captcha: ${error}`, { status: 500 })
-	}
+	// try {
+	// 	const apiRoute = `https://www.google.com/recaptcha/api/siteverify?secret=${env.CAPTCHA_PRIVATE_KEY}&response=${formData.googlecaptchaToken}`
+	// 	captchaResponse = await fetch(apiRoute)
+	// } catch (error) {
+	// 	return new Response(`Error verifying captcha: ${error}`, { status: 400 })
+	// }
 	
 
 
 	try {
 		const body = 
 `Von: ${data.name || 'Unbekannt'} (${data.email || 'Nicht angegeben'})
-
-Vertrauenswürdigkeit: ${JSON.stringify(captchaResponse)}
 
 Nachricht:
 ${data.message || "Leere Nachricht"}
@@ -72,7 +70,7 @@ ${data.message || "Leere Nachricht"}
 			method: 'POST',
 		})
 	} catch (error) {
-		return new Response(`Error sending email: ${error}`, { status: 500 })
+		return new Response(`Error sending email: ${error}`, { status: 400 })
 	}
 
 	let response = {
