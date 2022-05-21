@@ -3,7 +3,7 @@
  */
 export async function onRequestPost({ env, request }) {
 
-	let APIResponse, data, captchaResponse
+	let APIResponse, data, captchaResponse, sendgridApiResponse
 
 	try {
 		let formData = await request.formData()
@@ -114,11 +114,30 @@ ${data.message || "Leere Nachricht"}
 		)
 	}
 
+	try {
+		sendgridApiResponse = await APIResponse.json()
+	} catch (error) {
+		let responseObj = {
+			status: 'error',
+			message: `Error parsinf sendgridApiResponse: ${error}`
+		}
+		return new Response(
+			JSON.stringify(responseObj),
+			{
+				status: 200,
+				headers: {
+					'Content-Type': 'application/json;charset=utf-8',
+				},
+			}
+		)
+	}
+
 	let response = {
 		status: 'success',
 		input: data,
 		captchaResponse,
-		APIResponse
+		APIResponse,
+		sendgridApiResponse
 	}
 
 	let prettyResponse =  JSON.stringify(response)
