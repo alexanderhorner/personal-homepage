@@ -35,14 +35,6 @@ let formData = null;
 
 var xhr = new XMLHttpRequest();
 
-function getGoogleCaptchaToken() { 
-    return new Promise((resolve, reject) => {
-        grecaptcha.enterprise.ready(async () => {
-            const token = await grecaptcha.enterprise.execute('6LeyVLEfAAAAACOQ-LvNhzgJf94CsQfG9ltauUxV', {action: 'LOGIN'});
-            resolve(token)
-        })
-    })
-}
 
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -52,13 +44,12 @@ form.addEventListener("submit", async (e) => {
     // @ts-ignore
     document.querySelector(".submit").disabled = true;
 
-    const token = await getGoogleCaptchaToken()
-    console.log(token);
-    
+    const googleCaptcha = document.querySelector(".g-recaptcha")
+    const captchaResponse = grecaptcha.getResponse()
+    formData.append('googlecaptchaToken', captchaResponse)
 
-    formData.append('googlecaptchaToken', token)
 
-    actionPath = form.getAttribute("action")
+    actionPath = form.getAttribute('')
 
     fetch(actionPath, {
         method: 'post',
