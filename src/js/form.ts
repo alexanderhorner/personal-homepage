@@ -35,20 +35,14 @@ let formData = null;
 
 var xhr = new XMLHttpRequest();
 
-
-form.addEventListener("submit", async (e) => {
+form.addEventListener("submit", (e) => {
     e.preventDefault();
     
-    formData = new FormData(form)
-
     // @ts-ignore
     document.querySelector(".submit").disabled = true;
 
-    // const googleCaptcha = document.querySelector(".g-recaptcha")
-    // const captchaResponse = grecaptcha.getResponse()
-    // formData.append('googlecaptchaToken', captchaResponse)
-
-    actionPath = form.getAttribute('')
+    formData = new FormData(form);
+    actionPath = form.getAttribute("action")
 
     fetch(actionPath, {
         method: 'post',
@@ -73,7 +67,7 @@ form.addEventListener("submit", async (e) => {
             // @ts-ignore
             document.querySelector(".error").style.display = "none"
         }).catch(error => {
-            console.error(`E-Mail Form Error: ${error}`);
+            console.log(error);
             // @ts-ignore
             document.querySelector(".error").style.display = "block"
             // @ts-ignore
