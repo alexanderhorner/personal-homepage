@@ -1,4 +1,6 @@
 interface SubmitFunctionResponse {
+    status: 'success' | 'fail' | 'error';
+    message: string;
     input:       Input;
     APIResponse: APIResponse;
 }
@@ -49,14 +51,16 @@ form.addEventListener("submit", (e) => {
         body: formData,
     }).then(response => {
             if (!response.status.toString().startsWith("2")) {
+                document.querySelector(".error").textContent = 'An unknown error occured. Please try again later.'
                 throw 'HTTP Status code is not 2xx'
             }
             return response
         }).then(async response => {
             let jsonResponse:SubmitFunctionResponse = await response.json()
             console.log(jsonResponse)
-            if (jsonResponse.APIResponse.status != 202) {
-                throw 'E-Mail send api status code is not 202'
+            if (jsonResponse.status != "success") {
+                document.querySelector(".error").textContent = jsonResponse.message
+                throw `API Responded with error: ${jsonResponse.message}`
             }
             return response
         }).then(response => {

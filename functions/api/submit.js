@@ -20,7 +20,7 @@ export async function onRequestPost({ env, request }) {
 		return new Response(
 			JSON.stringify(responseObj),
 			{
-				status: 400,
+				status: 200,
 				headers: {
 					'Content-Type': 'application/json;charset=utf-8',
 				},
@@ -45,7 +45,7 @@ export async function onRequestPost({ env, request }) {
 		return new Response(
 			JSON.stringify(responseObj),
 			{
-				status: 400,
+				status: 200,
 				headers: {
 					'Content-Type': 'application/json;charset=utf-8',
 				},
@@ -106,7 +106,7 @@ ${data.message || "Leere Nachricht"}
 		return new Response(
 			JSON.stringify(responseObj),
 			{
-				status: 400,
+				status: 200,
 				headers: {
 					'Content-Type': 'application/json;charset=utf-8',
 				},
