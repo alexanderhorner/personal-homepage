@@ -59,8 +59,6 @@ export async function onRequestPost({ env, request }) {
 		const body = 
 `Von: ${data.name || 'Unbekannt'} (${data.email || 'Nicht angegeben'})
 
-Captcha Response: 
-
 Nachricht:
 ${data.message || "Leere Nachricht"}
 `
@@ -115,11 +113,22 @@ ${data.message || "Leere Nachricht"}
 	}
 
 	try {
-		sendgridApiResponse = await APIResponse.text()
+		if (APIResponse.ok === false) {
+			let errorMessage
+
+			try {
+				sendgridApiResponse = await APIResponse.json()
+				errorMessage = sendgridApiResponse.errors.message
+			} catch (error) {
+				errorMessage = sendgridApiResponse = await APIResponse.text()
+			}
+
+			throw 'errorMessage'
+		}
 	} catch (error) {
 		let responseObj = {
 			status: 'error',
-			message: `Error parsinf sendgridApiResponse: ${error}`
+			message: `Error sending email: ${error}`
 		}
 		return new Response(
 			JSON.stringify(responseObj),
