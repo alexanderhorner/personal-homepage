@@ -44,10 +44,9 @@ form.addEventListener("submit", async (e) => {
     // @ts-ignore
     document.querySelector(".submit").disabled = true;
 
-    const googleCaptcha = document.querySelector(".g-recaptcha")
-    const captchaResponse = grecaptcha.getResponse()
-    formData.append('googlecaptchaToken', captchaResponse)
-
+    // const googleCaptcha = document.querySelector(".g-recaptcha")
+    // const captchaResponse = grecaptcha.getResponse()
+    // formData.append('googlecaptchaToken', captchaResponse)
 
     actionPath = form.getAttribute('')
 
