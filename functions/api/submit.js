@@ -19,12 +19,12 @@ export async function onRequestPost({ env, request }) {
 
 
 	// Captcha verification
-	// try {
-	// 	const apiRoute = `https://www.google.com/recaptcha/api/siteverify?secret=${env.CAPTCHA_PRIVATE_KEY}&response=${data.googlecaptchaToken}`
-	// 	captchaResponse = await fetch(apiRoute)
-	// } catch (error) {
-	// 	return new Response(`Error verifying captcha: ${error}`, { status: 400 })
-	// }
+	try {
+		const apiRoute = `https://www.google.com/recaptcha/api/siteverify?secret=${env.CAPTCHA_PRIVATE_KEY}&response=${data.googlecaptchaToken}`
+		captchaResponse = await fetch(apiRoute)
+	} catch (error) {
+		return new Response(`Error verifying captcha: ${error}`, { status: 400 })
+	}
 	
 
 

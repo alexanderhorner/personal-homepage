@@ -33,7 +33,6 @@ let form = document.querySelector("form")
 let actionPath = "";
 let formData = null;
 
-var xhr = new XMLHttpRequest();
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -42,6 +41,12 @@ form.addEventListener("submit", (e) => {
     document.querySelector(".submit").disabled = true;
 
     formData = new FormData(form);
+    
+    const googleCaptcha = document.querySelector(".g-recaptcha")
+    const captchaResponse = grecaptcha.getResponse()
+    formData.append('googlecaptchaToken', captchaResponse)
+
+
     actionPath = form.getAttribute("action")
 
     fetch(actionPath, {
