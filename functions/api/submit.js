@@ -1,9 +1,9 @@
 /**
  * POST /api/submit
  */
-export async function onRequestPost({ env, request }) {
+ export async function onRequestPost({ env, request }) {
 
-	let APIResponse, data, captchaResponse
+	let APIResponse, data
 
 	try {
 		let formData = await request.formData()
@@ -17,23 +17,12 @@ export async function onRequestPost({ env, request }) {
 		return new Response(`Error parsing input: ${error}`, { status: 400 })
 	}
 
-
-	// Captcha verification
-	// try {
-	// 	const apiRoute = `https://www.google.com/recaptcha/api/siteverify?secret=${env.CAPTCHA_PRIVATE_KEY}&response=${formData.googlecaptchaToken}`
-	// 	captchaResponse = await fetch(apiRoute)
-	// } catch (error) {
-	// 	return new Response(`Error verifying captcha: ${error}`, { status: 400 })
-	// }
-	
-
-
 	try {
 		const body = 
-`Von: ${data.name || 'Unbekannt'} (${data.email || 'Nicht angegeben'})
-
-Nachricht:
-${data.message || "Leere Nachricht"}
+`Von: ${data.name || 'Unbekannt'} (${data.email || 'Nicht angegeben'})\n\n
+Nachricht: \n
+${data.message || "Leere Nachricht"} \n\n
+-------------------\n
 `
 
 
@@ -59,7 +48,7 @@ ${data.message || "Leere Nachricht"}
 					"email":"mail@alexanderhorner.com"
 				},
 				"reply_to":{
-					"email": data.email || 'N/A',
+					"email": data.email || '',
 					"name": data.name || 'Kein Name'
 				}
 			}),
