@@ -7,7 +7,6 @@ export async function onRequestPost({ env, request }) {
 
 	try {
 		let formData = await request.formData()
-		let pretty = JSON.stringify([...formData], null, 2)
 
 		data = {}
 		for(var pair of formData.entries()) {
@@ -20,7 +19,7 @@ export async function onRequestPost({ env, request }) {
 
 	// Captcha verification
 	try {
-		const apiRoute = `https://www.google.com/recaptcha/api/siteverify?secret=${env.CAPTCHA_PRIVATE_KEY}&response=${data.googlecaptchaToken}`
+		const apiRoute = `https://www.google.com/recaptcha/api/siteverify?secret=${env.CAPTCHA_PRIVATE_KEY}&response=${data['g-recaptcha-response']}`
 		captchaResponse = await fetch(apiRoute)
 	} catch (error) {
 		return new Response(`Error verifying captcha: ${error}`, { status: 400 })
@@ -31,6 +30,8 @@ export async function onRequestPost({ env, request }) {
 	try {
 		const body = 
 `Von: ${data.name || 'Unbekannt'} (${data.email || 'Nicht angegeben'})
+
+Captcha Response: 
 
 Nachricht:
 ${data.message || "Leere Nachricht"}
@@ -75,6 +76,7 @@ ${data.message || "Leere Nachricht"}
 
 	let response = {
 		input: data,
+		captchaResponse,
 		APIResponse
 	}
 
