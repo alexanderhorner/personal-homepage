@@ -118,7 +118,7 @@ ${data.message || "Leere Nachricht"}
 
 			try {
 				sendgridApiResponse = await APIResponse.json()
-				errorMessage = sendgridApiResponse.errors.message
+				errorMessage = JSON.stringify(sendgridApiResponse)
 			} catch (error) {
 				errorMessage = sendgridApiResponse = await APIResponse.text()
 			}
