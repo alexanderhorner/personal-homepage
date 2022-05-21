@@ -123,7 +123,7 @@ ${data.message || "Leere Nachricht"}
 				errorMessage = sendgridApiResponse = await APIResponse.text()
 			}
 
-			throw 'errorMessage'
+			throw errorMessage
 		}
 	} catch (error) {
 		let responseObj = {
