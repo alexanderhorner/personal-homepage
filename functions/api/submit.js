@@ -21,7 +21,7 @@ export async function onRequestPost({ env, request }) {
 	try {
 		const apiRoute = `https://www.google.com/recaptcha/api/siteverify?secret=${env.CAPTCHA_PRIVATE_KEY}&response=${data['g-recaptcha-response']}`
 		captchaResponse = await fetch(apiRoute)
-		captchaResponse = await captchaResponse.json()
+		captchaResponse = await response.json()
 	} catch (error) {
 		return new Response(`Error verifying captcha: ${error}`, { status: 400 })
 	}
@@ -78,8 +78,7 @@ ${data.message || "Leere Nachricht"}
 	let response = {
 		input: data,
 		captchaResponse,
-		APIResponse,
-		realAPIResponse
+		APIResponse
 	}
 
 	let prettyResponse =  JSON.stringify(response)
