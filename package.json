@@ -30,6 +30,8 @@
     "@gltf-transform/core": "^2.0.5",
     "@gltf-transform/extensions": "^2.0.5",
     "@gltf-transform/functions": "^2.0.5",
+    "@google-cloud/recaptcha-enterprise": "^2.5.0",
+    "@types/grecaptcha": "^3.0.4",
     "autosize": "^5.0.1",
     "draco3dgltf": "^1.5.2",
     "three": "^0.138.2"

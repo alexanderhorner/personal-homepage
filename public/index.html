@@ -22,7 +22,11 @@
         <script src="/index.dddb293e.js" defer=""></script>
         <script defer="" src="/index.61db7c5a.js"></script>
         <script defer="" src="/index.ec91358c.js"></script>
+        <!-- <script defer src="./js/googlecaptcha.ts"></script> -->
         <link href="/index.d9c1dfc9.css" rel="stylesheet">
+
+        <script src="https://www.google.com/recaptcha/api.js" async="" defer=""></script>
+
     </head>
 
     <body>
@@ -49,8 +53,9 @@
                 <img src="/me-color.855e6677.jpeg" alt="Portrait of Alexander Horner">
                 
                 <div>
-                    <p>I am a young amateur <b>full stack developer</b> who’s also proficient at designing <b>beautiful websites</b> and applications. I‘m great with working in teams but can also get things done alone.</p>
-                    <p>I’m still attending school, but work on big projects with great success so far.  I love solving problems and using the <b>newest technologies</b> that will give you the edge against your competitors.</p>
+                    <p>I am a self-taught <b>software developer</b> with a passion for building applications that solve real-world problems. I am a quick learner, and have a strong attention to detail, which makes me an excellent software developer.</p>
+                    <p>I have experience working in a variety of programming languages, including JavaScript and PHP. I am also familiar with a number of frameworks, such as Laravel and Vue.</p> 
+                    <p>I am always excited to learn new technologies and am comfortable working on both front-end and back-end development. I am excited to use my skills to build applications that have a positive impact on the world.</p>
                 </div>
             </div>
 
@@ -62,6 +67,9 @@
             <div class="error">An error occured. Try again later.</div>
 
             <form method="POST" action="/api/submit">
+
+                <span>Verification:</span>
+                <div hidden="" class="g-recaptcha" data-sitekey="6Lep3wkgAAAAALx3J9nNMRyhR-HZjp2LPXB_WfeV"></div>
 
                 <label for="name">Name:</label>
                 <input autocomplete="name" type="text" name="name" placeholder="What’s your full name?">

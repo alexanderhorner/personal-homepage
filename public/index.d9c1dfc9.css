@@ -176,7 +176,7 @@ header a:last-child {
   margin-bottom: 0em;
 }
 
-.about-me .description div p:last-child {
+.about-me .description div p:nth-child(2n) {
   grid-column: 1/5;
 }
 

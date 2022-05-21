@@ -1,4 +1,6 @@
 interface SubmitFunctionResponse {
+    status: 'success' | 'fail' | 'error';
+    message: string;
     input:       Input;
     APIResponse: APIResponse;
 }
@@ -33,7 +35,6 @@ let form = document.querySelector("form")
 let actionPath = "";
 let formData = null;
 
-var xhr = new XMLHttpRequest();
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -41,15 +42,8 @@ form.addEventListener("submit", (e) => {
     // @ts-ignore
     document.querySelector(".submit").disabled = true;
 
-    // grecaptcha.enterprise.ready(async () => {
-    //     const token = await grecaptcha.enterprise.execute('site_key', {action: 'LOGIN'});
-    //     // IMPORTANT: The 'token' that results from execute is an encrypted response sent by
-    //     // reCAPTCHA Enterprise to the end user's browser.
-    //     // This token must be validated by creating an assessment.
-    //     // See https://cloud.google.com/recaptcha-enterprise/docs/create-assessment
-    // });
-
     formData = new FormData(form);
+
     actionPath = form.getAttribute("action")
 
     fetch(actionPath, {
@@ -57,14 +51,16 @@ form.addEventListener("submit", (e) => {
         body: formData,
     }).then(response => {
             if (!response.status.toString().startsWith("2")) {
+                document.querySelector(".error").textContent = 'An unknown error occured. Please try again later.'
                 throw 'HTTP Status code is not 2xx'
             }
             return response
         }).then(async response => {
             let jsonResponse:SubmitFunctionResponse = await response.json()
             console.log(jsonResponse)
-            if (jsonResponse.APIResponse.status != 202) {
-                throw 'E-Mail send api status code is not 202'
+            if (jsonResponse.status != "success") {
+                document.querySelector(".error").textContent = jsonResponse.message
+                throw `API Responded with error: ${jsonResponse.message}`
             }
             return response
         }).then(response => {
